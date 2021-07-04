@@ -1,46 +1,28 @@
-import React, { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { FaPlus } from 'react-icons/fa';
+import '../App.css';
+import PersonalInfo from './PersonalInfo';
+import { StudentContext } from './StudentContext';
 import TestScores from './TestScores';
 
 function Students(props) {
-  const { students } = props;
+  const [students, setStudents] = useContext(StudentContext);
 
   return (
     <div className="Students">
       {students.map((student) => {
-        const { pic, firstName, lastName, email, company, skill, grades, id } =
-          student;
-
-        return (
-          <Student
-            key={id}
-            pic={pic}
-            firstName={firstName}
-            lastName={lastName}
-            email={email}
-            company={company}
-            skill={skill}
-            grades={grades}
-          />
-        );
+        return <Student key={student.id} student={student} />;
       })}
     </div>
   );
 }
 
-function Student(props) {
-  const { pic, firstName, lastName, email, company, skill, grades } = props;
+function Student({ student }) {
+  const { pic, firstName, lastName, email, company, skill, grades } = student;
+  const [students, setStudents] = useContext(StudentContext);
 
   const [extend, setExtend] = useState(false);
-
-  function average(grades) {
-    const total = grades.reduce(
-      (acc, value) => parseInt(acc) + parseInt(value)
-    );
-    const averageGrade = (total / grades.length).toFixed(3);
-    return averageGrade;
-  }
 
   return (
     <IconContext.Provider value={{ color: '#c2c2c2', size: '2em' }}>
@@ -58,13 +40,13 @@ function Student(props) {
                 }}
               />
             </div>
-            <div className="personal-info">
-              <div className="student-info">
-                <div className="email">Email: {email}</div>
-                <div className="company">Company: {company}</div>
-                <div className="skill">Skill: {skill}</div>
-                <div className="average">Average: {average(grades)}</div>
-              </div>
+            <div className="student-info">
+              <PersonalInfo
+                email={email}
+                company={company}
+                skill={skill}
+                grades={grades}
+              />
 
               <TestScores grades={grades} />
             </div>

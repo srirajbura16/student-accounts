@@ -26,15 +26,16 @@ body {
   padding: 10px;
 }
 
-.name-search {
+input[type='text'] {
   width: 98%;
   border: none;
   font-size: 1.2rem;
   padding-bottom: 10px;
   border-bottom: 1px solid black;
+  margin-bottom: 1rem;
 }
 
-.name-search:focus {
+input[type='text']:focus {
   outline: none;
 }
 
@@ -72,18 +73,22 @@ body {
   margin-bottom: 1rem;
 }
 
-.personal-info {
+/* PERSONAL-INFO */
+
+.PersonalInfo {
   margin-left: 1.5rem;
 }
 
-.personal-info > * {
+.PersonalInfo > * {
   margin-bottom: 0.5rem;
 }
-/* STUDENT */
+
+/* PERSONAL-INFO */
 
 /* TEST-SCORES */
-.test-scores {
+.TestScores {
   list-style-type: none;
+  margin-left: 1.5rem;
 }
 
 /* TEST-SCORES */

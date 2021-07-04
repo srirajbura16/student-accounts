@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import './App.css';
+import { StudentContext } from './components/StudentContext';
 import Students from './components/Students';
 
 function App() {
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useContext(StudentContext);
+
   let allStudents = useRef([]);
 
   useEffect(() => {
@@ -36,6 +38,11 @@ function App() {
     return searchByName;
   }
 
+  function searchTag(e) {
+    const value = e.target.value;
+    console.log(value);
+  }
+
   return (
     <div className="App">
       <input
@@ -44,7 +51,13 @@ function App() {
         placeholder="Search by name"
         onChange={searchName}
       />
-      <Students students={students} />
+      <input
+        type="text"
+        className="tag-search"
+        placeholder="Search by name"
+        onChange={searchTag}
+      />
+      <Students />
     </div>
   );
 }
