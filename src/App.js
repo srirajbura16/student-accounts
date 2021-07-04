@@ -1,24 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Students from './components/Students';
 
 function App() {
-  const [students, setStudents] = useState([
-    { firstName: 1 },
-    { firstName: 2 },
-    { firstName: 3 },
-    { firstName: 4 },
-    { firstName: 5 },
-  ]);
-
-  // async function fetchStudents() {
-  //   const data = await fetch(`https://api.hatchways.io/assessment/students`, {
-  //     mode: 'cors',
-  //   });
-
-  //   const dataJSON = await data.json();
-
-  //   return dataJSON.students;
-  // }
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
     async function fetchStudents() {
@@ -40,9 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      {students.map((student) => {
-        return <div>{student.firstName}</div>;
-      })}
+      <Students students={students} />
     </div>
   );
 }
