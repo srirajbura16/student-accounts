@@ -3,8 +3,6 @@ import React from 'react';
 function Students(props) {
   const { students } = props;
 
-  console.log(students);
-
   return (
     <div className="Students">
       {students.map((student) => {
