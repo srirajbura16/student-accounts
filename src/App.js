@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [students, setStudents] = useState([
+    { firstName: 1 },
+    { firstName: 2 },
+    { firstName: 3 },
+    { firstName: 4 },
+    { firstName: 5 },
+  ]);
+
+  // async function fetchStudents() {
+  //   const data = await fetch(`https://api.hatchways.io/assessment/students`, {
+  //     mode: 'cors',
+  //   });
+
+  //   const dataJSON = await data.json();
+
+  //   return dataJSON.students;
+  // }
+
+  useEffect(() => {
+    async function fetchStudents() {
+      const data = await fetch(`https://api.hatchways.io/assessment/students`, {
+        mode: 'cors',
+      });
+
+      const dataJSON = await data.json();
+      const students = dataJSON.students;
+      console.log(students);
+
+      setStudents(students);
+
+      return dataJSON.students;
+    }
+
+    fetchStudents();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {students.map((student) => {
+        return <div>{student.firstName}</div>;
+      })}
     </div>
   );
 }
