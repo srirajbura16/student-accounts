@@ -38,17 +38,24 @@ function Student(props) {
   }
 
   return (
-    <div className="Students">
-      <div className="avatar">
-        <img src={pic} alt="Profile Avatar" />
+    <div className="Student">
+      <div className="student-container">
+        <div className="avatar">
+          <img src={pic} alt="Profile Avatar" />
+        </div>
+        <div className="info-container">
+          <div className="name">
+            <h1>{`${firstName} ${lastName}`.toUpperCase()}</h1>
+          </div>
+          <div className="personal-info">
+            <div className="email">Email: {email}</div>
+            <div className="company">Company: {company}</div>
+            <div className="skill">Skill: {skill}</div>
+            <div className="average">Average: {average(grades)}</div>
+          </div>
+        </div>
       </div>
-      <div className="info">
-        <h1 className="name">{`${firstName} ${lastName}`}</h1>
-        <div className="email">Email: {email}</div>
-        <div className="company">Company: {company}</div>
-        <div className="skill">Skill: {skill}</div>
-        <div className="average">Average: {average(grades)}</div>
-      </div>
+      <hr />
     </div>
   );
 }

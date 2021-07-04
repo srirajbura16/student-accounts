@@ -24,7 +24,7 @@ function App() {
     fetchStudents();
   }, []);
 
-  function onChange(e) {
+  function searchName(e) {
     const value = e.target.value;
     const searchByName = allStudents.current.filter((student) => {
       const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
@@ -38,7 +38,12 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" placeholder="Search by name" onChange={onChange} />
+      <input
+        type="text"
+        className="name-search"
+        placeholder="Search by name"
+        onChange={searchName}
+      />
       <Students students={students} />
     </div>
   );
