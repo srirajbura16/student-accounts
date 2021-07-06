@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { StudentProvider } from './components/StudentContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StudentProvider>
-      <App />
-    </StudentProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -97,8 +97,12 @@ input[type='text']:focus {
   justify-content: space-between;
 }
 
-svg:hover {
-  background-color: black;
+.icon {
+  font-size: 2em;
+  color: #c2c2c2;
+}
+.icon:hover {
+  color: black;
 }
 
 /* TAGS */

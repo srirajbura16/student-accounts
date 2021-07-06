@@ -1,4 +1,3 @@
-import { IconContext } from 'react-icons';
 import '../App.css';
 import InfoContainer from './InfoContainer';
 function Students({ students }) {
@@ -13,17 +12,17 @@ function Students({ students }) {
 
 function Student({ student }) {
   return (
-    <IconContext.Provider value={{ color: '#c2c2c2', size: '2em' }}>
-      <div className="Student">
-        <div className="student-container">
-          <div className="avatar">
-            <img src={student.pic} alt="Profile Avatar" />
-          </div>
-          <InfoContainer student={student} />
+    <div className="Student">
+      <div className="student-container">
+        <div className="avatar">
+          <img src={student.pic} alt="Profile Avatar" />
         </div>
-        <hr />
+        <InfoContainer student={student} />
       </div>
-    </IconContext.Provider>
+      <hr />
+    </div>
+    //     <IconContext.Provider value={{ color: '#c2c2c2', size: '2em' }}>
+    // </IconContext.Provider>
   );
 }
 
