@@ -22,7 +22,6 @@ function App() {
 
       allStudents.current = students;
       setStudents(students);
-      console.log(students);
 
       return dataJSON.students;
     }
@@ -44,7 +43,27 @@ function App() {
 
   function searchTag(e) {
     const value = e.target.value;
-    console.log(value);
+    const searchByTag = allStudents.current.filter((student) => {
+      if (tagSearch(student.tags, value)) {
+        return student;
+      }
+    });
+    setStudents(searchByTag);
+    return searchByTag;
+  }
+
+  function tagSearch(tags, value) {
+    const filteredTags = tags.filter((tag) => {
+      if (tag.includes(value)) {
+        return tag;
+      }
+    });
+
+    if (filteredTags.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   return (

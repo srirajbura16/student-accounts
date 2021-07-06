@@ -11,6 +11,7 @@ function Tags({ student }) {
     const data = tags;
     data.push(tag);
     setTags(data);
+    student.tags = data;
 
     setTag('');
     e.target.reset();
