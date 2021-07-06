@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-function PersonalInfo({ email, company, skill, average, grades }) {
+function PersonalInfo({ email, company, skill, grades }) {
   function averageGrade(grades) {
     const total = grades.reduce(
       (acc, value) => parseInt(acc) + parseInt(value)

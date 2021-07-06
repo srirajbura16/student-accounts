@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef } from 'react';
 import './App.css';
 import { StudentContext } from './components/StudentContext';
 import Students from './components/Students';
-
 function App() {
   const [students, setStudents] = useContext(StudentContext);
 
@@ -17,8 +16,13 @@ function App() {
       const dataJSON = await data.json();
       const students = dataJSON.students;
 
+      students.forEach((student) => {
+        student.tags = [];
+      });
+
       allStudents.current = students;
       setStudents(students);
+      console.log(students);
 
       return dataJSON.students;
     }

@@ -4,8 +4,8 @@ import { FaPlus } from 'react-icons/fa';
 import '../App.css';
 import PersonalInfo from './PersonalInfo';
 import { StudentContext } from './StudentContext';
+import Tags from './Tags';
 import TestScores from './TestScores';
-
 function Students(props) {
   const [students, setStudents] = useContext(StudentContext);
 
@@ -47,6 +47,7 @@ function Student({ student }) {
                 skill={skill}
                 grades={grades}
               />
+              <Tags student={student} />
               {extend && <TestScores grades={grades} />}
             </div>
           </div>
