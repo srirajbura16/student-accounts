@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
 import '../App.css';
+import ExtendComponent from './ExtendComponent';
 import PersonalInfo from './PersonalInfo';
 import Tags from './Tags';
 import TestScores from './TestScores';
@@ -30,11 +30,7 @@ function InfoContainer({ student }) {
           )}
         </div>
       </div>
-      <FaPlus
-        onClick={() => {
-          setExtend(!extend);
-        }}
-      />
+      <ExtendComponent extend={extend} setExtend={setExtend} />
     </div>
   );
 }

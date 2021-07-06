@@ -68,18 +68,21 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        className="name-search"
-        placeholder="Search by name"
-        onChange={searchName}
-      />
-      <input
-        type="text"
-        className="tag-search"
-        placeholder="Search by tag"
-        onChange={searchTag}
-      />
+      <div className="navbar">
+        <input
+          type="text"
+          className="name-search"
+          placeholder="Search by name"
+          onChange={searchName}
+        />
+        <input
+          type="text"
+          className="tag-search"
+          placeholder="Search by tag"
+          onChange={searchTag}
+        />
+      </div>
+
       <Students />
     </div>
   );

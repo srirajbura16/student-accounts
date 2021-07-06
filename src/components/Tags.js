@@ -24,9 +24,13 @@ function Tags({ student }) {
 
   return (
     <div className="Tags">
-      <div>
+      <div className="tag-container">
         {student.tags.map((studentTag) => {
-          return <div key={nanoid()}>{studentTag}</div>;
+          return (
+            <div className="tag" key={nanoid()}>
+              {studentTag}
+            </div>
+          );
         })}
       </div>
 
