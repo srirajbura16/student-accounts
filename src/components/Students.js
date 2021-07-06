@@ -1,11 +1,7 @@
-import { useContext } from 'react';
 import { IconContext } from 'react-icons';
 import '../App.css';
 import InfoContainer from './InfoContainer';
-import { StudentContext } from './StudentContext';
-function Students() {
-  const [students] = useContext(StudentContext);
-
+function Students({ students }) {
   return (
     <div className="Students">
       {students.map((student) => {

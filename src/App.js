@@ -1,20 +1,14 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
-import { StudentContext } from './components/StudentContext';
 import Students from './components/Students';
+import fetchStudents from './fetchStudents';
 function App() {
-  const [students, setStudents] = useContext(StudentContext);
-
+  const [students, setStudents] = useState([]);
   let allStudents = useRef([]);
 
   useEffect(() => {
-    async function fetchStudents() {
-      const data = await fetch(`https://api.hatchways.io/assessment/students`, {
-        mode: 'cors',
-      });
-
-      const dataJSON = await data.json();
-      const students = dataJSON.students;
+    async function processData() {
+      const students = await fetchStudents();
 
       students.forEach((student) => {
         student.tags = [];
@@ -22,11 +16,9 @@ function App() {
 
       allStudents.current = students;
       setStudents(students);
-
-      return dataJSON.students;
     }
 
-    fetchStudents();
+    processData();
   }, []);
 
   function searchName(e) {
@@ -83,7 +75,7 @@ function App() {
         />
       </div>
 
-      <Students />
+      <Students students={students} />
     </div>
   );
 }
