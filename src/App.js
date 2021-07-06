@@ -54,7 +54,7 @@ function App() {
       <input
         type="text"
         className="tag-search"
-        placeholder="Search by name"
+        placeholder="Search by tag"
         onChange={searchTag}
       />
       <Students />

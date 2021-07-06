@@ -36,7 +36,7 @@ function Student({ student }) {
               <h1>{`${firstName} ${lastName}`.toUpperCase()}</h1>
               <FaPlus
                 onClick={() => {
-                  setExtend(true);
+                  setExtend(!extend);
                 }}
               />
             </div>
@@ -47,8 +47,7 @@ function Student({ student }) {
                 skill={skill}
                 grades={grades}
               />
-
-              <TestScores grades={grades} />
+              {extend && <TestScores grades={grades} />}
             </div>
           </div>
         </div>
