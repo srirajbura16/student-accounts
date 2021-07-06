@@ -25,13 +25,18 @@ function Tags({ student }) {
   return (
     <div className="Tags">
       <div>
-        {tags.map((studentTag) => {
+        {student.tags.map((studentTag) => {
           return <div key={nanoid()}>{studentTag}</div>;
         })}
       </div>
 
       <form onSubmit={addTag}>
-        <input type="text" className="tag-input" onChange={updateTag} />
+        <input
+          type="text"
+          className="tag-input"
+          onChange={updateTag}
+          placeholder="Add a tag"
+        />
       </form>
     </div>
   );
