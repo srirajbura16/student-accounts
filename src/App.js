@@ -35,6 +35,10 @@ function App() {
 
   function searchTag(e) {
     const value = e.target.value;
+    if (value === '') {
+      setStudents(allStudents.current);
+      return;
+    }
     const searchByTag = allStudents.current.filter((student) => {
       if (tagSearch(student.tags, value)) {
         return student;

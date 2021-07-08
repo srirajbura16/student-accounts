@@ -4,6 +4,7 @@ import '../App.css';
 function ExtendComponent({ extend, setExtend }) {
   function updateExtend() {
     setExtend(!extend);
+    return;
   }
 
   return (
