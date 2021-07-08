@@ -32,7 +32,9 @@ function App() {
       if (fullName.includes(value)) {
         return student;
       }
+      return false;
     });
+    console.log(students);
     setStudents(searchByName);
     return searchByName;
   }
@@ -43,10 +45,11 @@ function App() {
       setStudents(allStudents.current);
       return;
     }
-    const searchByTag = allStudents.current.filter((student) => {
+    const searchByTag = students.filter((student) => {
       if (tagSearch(student.tags, value)) {
         return student;
       }
+      return false;
     });
     setStudents(searchByTag);
     return searchByTag;
@@ -57,6 +60,7 @@ function App() {
       if (tag.includes(value)) {
         return tag;
       }
+      return false;
     });
 
     if (filteredTags.length > 0) {
