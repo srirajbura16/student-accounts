@@ -148,3 +148,20 @@ input[type='text']:focus {
 }
 
 /* TEST-SCORES */
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 725px) {
+  .student-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .InfoContainer {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+/* RESPONSIVE */

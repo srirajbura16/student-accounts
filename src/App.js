@@ -23,7 +23,11 @@ function App() {
 
   function searchName(e) {
     const value = e.target.value;
-    const searchByName = allStudents.current.filter((student) => {
+    if (value === '') {
+      setStudents(allStudents.current);
+      return;
+    }
+    const searchByName = students.filter((student) => {
       const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
       if (fullName.includes(value)) {
         return student;
