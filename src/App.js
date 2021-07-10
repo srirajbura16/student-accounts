@@ -21,8 +21,8 @@ function App() {
 
   useEffect(() => {
     const tagStudents = filterTags();
-    const nameStudents = filterNames(tagStudents);
-    setStudents(nameStudents);
+    const currentStudents = filterNames(tagStudents);
+    setStudents(currentStudents);
   }, [nameField, tagField]);
 
   function filterNames(students) {
@@ -38,6 +38,10 @@ function App() {
   }
 
   function filterTags() {
+    if (tagField.length === 0) {
+      return allStudents.current;
+    }
+
     const students = allStudents.current.filter((student) => {
       if (searchStudentTag(student.tags, tagField)) {
         return student;
@@ -45,11 +49,12 @@ function App() {
       return false;
     });
 
-    if (tagField.length === 0) {
-      return allStudents.current;
-    }
-
     return students;
+  }
+
+  function searchStudentTag(tags, value) {
+    const findTag = tags.some((tag) => tag.includes(value));
+    return findTag;
   }
 
   function handleName(e) {
@@ -57,11 +62,6 @@ function App() {
   }
   function handleTag(e) {
     setTagField(e.target.value.toLowerCase());
-  }
-
-  function searchStudentTag(tags, value) {
-    const findTag = tags.some((tag) => tag.includes(value));
-    return findTag;
   }
 
   return (

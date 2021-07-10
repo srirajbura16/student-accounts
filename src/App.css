@@ -54,11 +54,12 @@ input[type='text']:focus {
   outline: none;
 }
 
+/* STUDENTS */
 .Students {
   margin-top: 1rem;
   padding-left: 1rem;
-  /* padding: 1rem; */
 }
+/* STUDENTS */
 
 /* STUDENT */
 .Student {
@@ -85,6 +86,13 @@ input[type='text']:focus {
   margin-right: 3rem;
 }
 
+/* InfoContainer */
+.InfoContainer {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .name {
   display: flex;
   justify-content: end;
@@ -92,21 +100,15 @@ input[type='text']:focus {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
-
-.InfoContainer {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
+.student-info {
+  margin-left: 1.5rem;
 }
 
-.icon {
-  font-size: 2em;
-  color: #c2c2c2;
+/* PERSONAL-INFO */
+.PersonalInfo > * {
+  margin-bottom: 0.5rem;
 }
-.icon:hover {
-  color: black;
-  cursor: pointer;
-}
+/* PERSONAL-INFO */
 
 /* TAGS */
 
@@ -128,32 +130,29 @@ input[type='text']:focus {
   font-size: 1rem;
   margin-top: 1rem;
 }
-
 /* TAGS */
-
-/* PERSONAL-INFO */
-
-.PersonalInfo,
-.Tags {
-  margin-left: 1.5rem;
-}
-
-.PersonalInfo > * {
-  margin-bottom: 0.5rem;
-}
-
-/* PERSONAL-INFO */
 
 /* TEST-SCORES */
 .TestScores {
   list-style-type: none;
-  margin-left: 1.5rem;
 }
-
 /* TEST-SCORES */
 
-/* RESPONSIVE */
+/* EXTENDED-COMPONENET */
+.icon {
+  font-size: 2em;
+  color: #c2c2c2;
+}
+.icon:hover {
+  color: black;
+  cursor: pointer;
+}
 
+/* EXTENDED-COMPONENET */
+
+/* InfoContainer */
+
+/* RESPONSIVE */
 @media screen and (max-width: 725px) {
   .student-container {
     flex-direction: column;
@@ -171,7 +170,6 @@ input[type='text']:focus {
     font-size: 0.8rem;
   }
 }
-
 /* RESPONSIVE */
 
 /* ERROR */
