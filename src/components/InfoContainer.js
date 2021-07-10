@@ -15,6 +15,7 @@ function InfoContainer({ student }) {
         <div className="name">
           <h1>{`${firstName} ${lastName}`.toUpperCase()}</h1>
         </div>
+
         <div className="student-info">
           <PersonalInfo
             email={email}
@@ -22,7 +23,9 @@ function InfoContainer({ student }) {
             skill={skill}
             grades={grades}
           />
+
           {!extend && <Tags student={student} />}
+
           {extend && (
             <>
               <TestScores grades={grades} /> <Tags student={student} />
@@ -30,6 +33,7 @@ function InfoContainer({ student }) {
           )}
         </div>
       </div>
+
       <ExtendComponent extend={extend} setExtend={setExtend} />
     </div>
   );

@@ -11,7 +11,7 @@ async function fetchStudents() {
     student.tags = [];
   });
 
-  return data.students;
+  return students;
 }
 
 export default fetchStudents;

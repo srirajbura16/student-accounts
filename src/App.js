@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Students from './components/Students';
 import fetchStudents from './fetchStudents';
+
 function App() {
   const [students, setStudents] = useState([]);
   const [tagField, setTagField] = useState('');
@@ -22,11 +23,13 @@ function App() {
   useEffect(() => {
     const tagStudents = filterTags();
     const currentStudents = filterNames(tagStudents);
+
     setStudents(currentStudents);
   }, [nameField, tagField]);
 
   function filterNames(students) {
-    const studentNames = students.filter((student) => {
+    //filter students with given name respective to the tag or no tag.
+    const filterStudentNames = students.filter((student) => {
       const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
       if (fullName.includes(nameField)) {
         return student;
@@ -34,34 +37,40 @@ function App() {
       return false;
     });
 
-    return studentNames;
+    return filterStudentNames;
   }
 
   function filterTags() {
+    //filter all students with given input by the user. If tagfield is empty, return all students.
     if (tagField.length === 0) {
       return allStudents.current;
     }
 
-    const students = allStudents.current.filter((student) => {
+    const filterStudentTags = allStudents.current.filter((student) => {
       if (searchStudentTag(student.tags, tagField)) {
         return student;
       }
       return false;
     });
 
-    return students;
+    return filterStudentTags;
   }
 
   function searchStudentTag(tags, value) {
+    //search through student tags, if found, return a boolean.
     const findTag = tags.some((tag) => tag.includes(value));
     return findTag;
   }
 
+  // Update input field state
   function handleName(e) {
     setNameField(e.target.value.toLowerCase());
+    return;
   }
+
   function handleTag(e) {
     setTagField(e.target.value.toLowerCase());
+    return;
   }
 
   return (

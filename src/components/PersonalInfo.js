@@ -7,6 +7,7 @@ function PersonalInfo({ email, company, skill, grades }) {
       (acc, value) => parseInt(acc) + parseInt(value)
     );
     const averageGrade = (total / grades.length).toFixed(2);
+
     return averageGrade;
   }
 

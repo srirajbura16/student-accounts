@@ -8,11 +8,11 @@ function Tags({ student }) {
 
   function addTag(e) {
     e.preventDefault();
-    const data = tags;
-    data.push(tag);
-    setTags(data);
-    student.tags = data;
 
+    //update
+    student.tags.push(tag);
+
+    //reset
     setTag('');
     e.target.reset();
   }
@@ -20,6 +20,7 @@ function Tags({ student }) {
   function updateTag(e) {
     const typedTag = e.target.value;
     setTag(typedTag);
+    return;
   }
 
   return (

@@ -1,20 +1,21 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
 import '../App.css';
 
 function TestScores({ grades, id }) {
   return (
     <ul className="TestScores">
-      {grades.map((grade, idx) => {
-        return <TestScore key={idx} grade={grade} idx={idx} />;
+      {grades.map((grade, index) => {
+        return <TestScore key={nanoid()} grade={grade} index={index} />;
       })}
     </ul>
   );
 }
 
-function TestScore({ grade, idx }) {
+function TestScore({ grade, index }) {
   return (
     <li>
-      Test{idx + 1}: {grade}%
+      Test{index + 1}: {grade}%
     </li>
   );
 }
