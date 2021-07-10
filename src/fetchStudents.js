@@ -5,6 +5,12 @@ async function fetchStudents() {
 
   const data = await response.json();
 
+  const students = data.students;
+
+  students.forEach((student) => {
+    student.tags = [];
+  });
+
   return data.students;
 }
 

@@ -22,13 +22,15 @@ body {
   width: 65%;
   height: 80vh;
   overflow: scroll;
-  /* border: 5px solid #ffff00; */
   border-radius: 0.5rem;
   padding: 0 10px 10px 10px;
+  position: relative;
 }
 
 .navbar {
   position: sticky;
+  width: 100%;
+  top: 0;
   background-color: white;
   padding-top: 10px;
 }
@@ -118,6 +120,7 @@ input[type='text']:focus {
   background-color: #c2c2c2;
   margin: 0 0.5rem 0.5rem 0;
   border-radius: 5px;
+  margin-top: 1rem;
 }
 
 .tag-input {
@@ -158,10 +161,21 @@ input[type='text']:focus {
   }
 
   .InfoContainer {
+    font-size: 0.7rem;
     margin-top: 1rem;
     width: 100%;
     justify-content: space-around;
   }
+
+  .name {
+    font-size: 0.8rem;
+  }
 }
 
 /* RESPONSIVE */
+
+/* ERROR */
+.error-msg {
+  color: red;
+}
+/* ERROR */

@@ -1,18 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Students from './components/Students';
 import fetchStudents from './fetchStudents';
 function App() {
   const [students, setStudents] = useState([]);
+  const [tagField, setTagField] = useState('');
+  const [nameField, setNameField] = useState('');
   let allStudents = useRef([]);
 
   useEffect(() => {
     async function processData() {
       const students = await fetchStudents();
-
-      students.forEach((student) => {
-        student.tags = [];
-      });
 
       allStudents.current = students;
       setStudents(students);
@@ -21,53 +19,49 @@ function App() {
     processData();
   }, []);
 
-  function searchName(e) {
-    const value = e.target.value;
-    if (value === '') {
-      setStudents(allStudents.current);
-      return;
-    }
-    const searchByName = students.filter((student) => {
+  useEffect(() => {
+    const tagStudents = filterTags();
+    const nameStudents = filterNames(tagStudents);
+    setStudents(nameStudents);
+  }, [nameField, tagField]);
+
+  function filterNames(students) {
+    const studentNames = students.filter((student) => {
       const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
-      if (fullName.includes(value)) {
+      if (fullName.includes(nameField)) {
         return student;
       }
       return false;
     });
-    console.log(students);
-    setStudents(searchByName);
-    return searchByName;
+
+    return studentNames;
   }
 
-  function searchTag(e) {
-    const value = e.target.value;
-    if (value === '') {
-      setStudents(allStudents.current);
-      return;
-    }
-    const searchByTag = students.filter((student) => {
-      if (tagSearch(student.tags, value)) {
+  function filterTags() {
+    const students = allStudents.current.filter((student) => {
+      if (searchStudentTag(student.tags, tagField)) {
         return student;
       }
       return false;
     });
-    setStudents(searchByTag);
-    return searchByTag;
+
+    if (tagField.length === 0) {
+      return allStudents.current;
+    }
+
+    return students;
   }
 
-  function tagSearch(tags, value) {
-    const filteredTags = tags.filter((tag) => {
-      if (tag.includes(value)) {
-        return tag;
-      }
-      return false;
-    });
+  function handleName(e) {
+    setNameField(e.target.value.toLowerCase());
+  }
+  function handleTag(e) {
+    setTagField(e.target.value.toLowerCase());
+  }
 
-    if (filteredTags.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+  function searchStudentTag(tags, value) {
+    const findTag = tags.some((tag) => tag.includes(value));
+    return findTag;
   }
 
   return (
@@ -77,17 +71,21 @@ function App() {
           type="text"
           className="name-search"
           placeholder="Search by name"
-          onChange={searchName}
+          onChange={handleName}
         />
         <input
           type="text"
           className="tag-search"
           placeholder="Search by tag"
-          onChange={searchTag}
+          onChange={handleTag}
         />
       </div>
 
-      <Students students={students} />
+      {students.length > 0 ? (
+        <Students students={students} />
+      ) : (
+        <div className="error-msg">No results found</div>
+      )}
     </div>
   );
 }
