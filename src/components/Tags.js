@@ -4,7 +4,6 @@ import '../App.css';
 
 function Tags({ student }) {
   const [tag, setTag] = useState();
-  const [tags, setTags] = useState([]);
 
   function addTag(e) {
     e.preventDefault();
@@ -20,6 +19,7 @@ function Tags({ student }) {
   function updateTag(e) {
     const typedTag = e.target.value;
     setTag(typedTag);
+
     return;
   }
 

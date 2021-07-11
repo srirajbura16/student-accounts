@@ -94,9 +94,6 @@ input[type='text']:focus {
 }
 
 .name {
-  display: flex;
-  justify-content: end;
-  align-items: center;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }

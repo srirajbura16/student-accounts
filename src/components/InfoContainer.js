@@ -7,6 +7,7 @@ import TestScores from './TestScores';
 
 function InfoContainer({ student }) {
   const { firstName, lastName, email, company, skill, grades } = student;
+
   const [extend, setExtend] = useState(false);
 
   return (

@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Students from './components/Students';
-import fetchStudents from './fetchStudents';
+import fetchData from './fetchData';
 
 function App() {
   const [students, setStudents] = useState([]);
+
   const [tagField, setTagField] = useState('');
   const [nameField, setNameField] = useState('');
-  let allStudents = useRef([]);
+
+  const AllStudents = useRef([]);
 
   useEffect(() => {
     async function processData() {
-      const students = await fetchStudents();
+      const students = await fetchData();
 
-      allStudents.current = students;
+      AllStudents.current = students;
+
       setStudents(students);
     }
 
@@ -21,8 +24,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const tagStudents = filterTags();
-    const currentStudents = filterNames(tagStudents);
+    const filteredStudentTags = filterTags();
+    const currentStudents = filterNames(filteredStudentTags);
 
     setStudents(currentStudents);
   }, [nameField, tagField]);
@@ -43,10 +46,10 @@ function App() {
   function filterTags() {
     //filter all students with given input by the user. If tagfield is empty, return all students.
     if (tagField.length === 0) {
-      return allStudents.current;
+      return AllStudents.current;
     }
 
-    const filterStudentTags = allStudents.current.filter((student) => {
+    const filterStudentTags = AllStudents.current.filter((student) => {
       if (searchStudentTag(student.tags, tagField)) {
         return student;
       }
@@ -59,17 +62,20 @@ function App() {
   function searchStudentTag(tags, value) {
     //search through student tags, if found, return a boolean.
     const findTag = tags.some((tag) => tag.includes(value));
+
     return findTag;
   }
 
   // Update input field state
   function handleName(e) {
     setNameField(e.target.value.toLowerCase());
+
     return;
   }
 
   function handleTag(e) {
     setTagField(e.target.value.toLowerCase());
+
     return;
   }
 
