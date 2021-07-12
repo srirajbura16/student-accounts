@@ -1,5 +1,4 @@
 import { FaMinus, FaPlus } from 'react-icons/fa';
-import '../App.css';
 
 function ExtendComponent({ extend, setExtend }) {
   function updateExtend() {

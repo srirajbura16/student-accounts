@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
-import '../App.css';
 
 function TestScores({ grades, id }) {
   return (

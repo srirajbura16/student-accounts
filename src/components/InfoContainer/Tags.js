@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
-import '../App.css';
 
 function Tags({ student }) {
   const [tag, setTag] = useState();

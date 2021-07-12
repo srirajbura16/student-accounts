@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 
 function PersonalInfo({ email, company, skill, grades }) {
   function averageGrade(grades) {

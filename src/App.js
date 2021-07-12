@@ -16,7 +16,6 @@ function App() {
       const students = await fetchData();
 
       AllStudents.current = students;
-
       setStudents(students);
     }
 
@@ -50,7 +49,7 @@ function App() {
     }
 
     const filterStudentTags = AllStudents.current.filter((student) => {
-      if (searchStudentTag(student.tags, tagField)) {
+      if (searchStudentTags(student.tags, tagField)) {
         return student;
       }
       return false;
@@ -59,8 +58,8 @@ function App() {
     return filterStudentTags;
   }
 
-  function searchStudentTag(tags, value) {
-    //search through student tags, if found, return a boolean.
+  function searchStudentTags(tags, value) {
+    //search value through student tags, if found, return a boolean.
     const findTag = tags.some((tag) => tag.includes(value));
 
     return findTag;

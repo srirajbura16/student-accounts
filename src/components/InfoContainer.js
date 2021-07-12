@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../App.css';
-import ExtendComponent from './ExtendComponent';
-import PersonalInfo from './PersonalInfo';
-import Tags from './Tags';
-import TestScores from './TestScores';
+import ExtendComponent from './InfoContainer/ExtendComponent';
+import PersonalInfo from './InfoContainer/PersonalInfo';
+import Tags from './InfoContainer/Tags';
+import TestScores from './InfoContainer/TestScores';
 
 function InfoContainer({ student }) {
   const { firstName, lastName, email, company, skill, grades } = student;
