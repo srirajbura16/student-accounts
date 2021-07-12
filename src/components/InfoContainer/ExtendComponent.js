@@ -3,8 +3,6 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 function ExtendComponent({ extend, setExtend }) {
   function updateExtend() {
     setExtend(!extend);
-
-    return;
   }
 
   return (

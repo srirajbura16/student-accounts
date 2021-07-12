@@ -18,8 +18,6 @@ function Tags({ student }) {
   function updateTag(e) {
     const typedTag = e.target.value;
     setTag(typedTag);
-
-    return;
   }
 
   return (

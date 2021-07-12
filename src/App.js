@@ -5,7 +5,7 @@ import fetchData from './fetchData';
 
 function App() {
   const [students, setStudents] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [nameField, setNameField] = useState('');
   const [tagField, setTagField] = useState('');
@@ -74,14 +74,10 @@ function App() {
   // Update input field state
   function handleName(e) {
     setNameField(e.target.value.toLowerCase());
-
-    return;
   }
 
   function handleTag(e) {
     setTagField(e.target.value.toLowerCase());
-
-    return;
   }
 
   return (
