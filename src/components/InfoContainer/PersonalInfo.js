@@ -5,9 +5,9 @@ function PersonalInfo({ email, company, skill, grades }) {
     const total = grades.reduce(
       (acc, value) => parseInt(acc) + parseInt(value)
     );
-    const averageGrade = (total / grades.length).toFixed(2);
+    const totalAverage = (total / grades.length).toFixed(2);
 
-    return averageGrade;
+    return totalAverage;
   }
 
   return (

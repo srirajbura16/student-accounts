@@ -87,7 +87,7 @@ input[type='text']:focus {
 }
 
 /* InfoContainer */
-.InfoContainer {
+.StudentInfo {
   width: 80%;
   display: flex;
   justify-content: space-between;
@@ -97,7 +97,7 @@ input[type='text']:focus {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
-.student-info {
+.info-container {
   margin-left: 1.5rem;
 }
 

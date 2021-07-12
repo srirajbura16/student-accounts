@@ -1,5 +1,5 @@
 import '../App.css';
-import InfoContainer from './InfoContainer';
+import StudentInfo from './StudentInfo';
 
 function Students({ students }) {
   return (
@@ -18,7 +18,7 @@ function Student({ student }) {
         <div className="avatar">
           <img src={student.pic} alt="Profile Avatar" />
         </div>
-        <InfoContainer student={student} />
+        <StudentInfo student={student} />
       </div>
       <hr />
     </div>

@@ -5,19 +5,19 @@ import PersonalInfo from './InfoContainer/PersonalInfo';
 import Tags from './InfoContainer/Tags';
 import TestScores from './InfoContainer/TestScores';
 
-function InfoContainer({ student }) {
+function StudentInfo({ student }) {
   const { firstName, lastName, email, company, skill, grades } = student;
 
   const [extend, setExtend] = useState(false);
 
   return (
-    <div className="InfoContainer">
+    <div className="StudentInfo">
       <div>
         <div className="name">
           <h1>{`${firstName} ${lastName}`.toUpperCase()}</h1>
         </div>
 
-        <div className="student-info">
+        <div className="info-container">
           <PersonalInfo
             email={email}
             company={company}
@@ -40,4 +40,4 @@ function InfoContainer({ student }) {
   );
 }
 
-export default InfoContainer;
+export default StudentInfo;
