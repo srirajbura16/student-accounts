@@ -1,15 +1,19 @@
 async function fetchData() {
-  const response = await fetch(`https://api.hatchways.io/assessment/students`, {
-    mode: 'cors',
-  });
-  const data = await response.json();
+  const API_URL = `https://api.hatchways.io/assessment/students`;
 
-  const students = data.students;
-  students.forEach((student) => {
-    student.tags = [];
-  });
+  try {
+    const response = await fetch(API_URL, { mode: 'cors' });
+    const data = await response.json();
 
-  return students;
+    const students = data.students;
+    students.forEach((student) => {
+      student.tags = [];
+    });
+
+    return [students, null];
+  } catch (error) {
+    return [null, error];
+  }
 }
 
 export default fetchData;

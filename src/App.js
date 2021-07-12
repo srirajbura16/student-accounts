@@ -5,18 +5,24 @@ import fetchData from './fetchData';
 
 function App() {
   const [students, setStudents] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const [tagField, setTagField] = useState('');
   const [nameField, setNameField] = useState('');
+  const [tagField, setTagField] = useState('');
 
   const AllStudents = useRef([]);
 
   useEffect(() => {
     async function processData() {
-      const students = await fetchData();
+      const [students, error] = await fetchData();
 
-      AllStudents.current = students;
-      setStudents(students);
+      if (error) {
+        setErrorMessage('Failed to fetch');
+      } else {
+        AllStudents.current = students;
+        setStudents(students);
+        setErrorMessage('No results found');
+      }
     }
 
     processData();
@@ -98,7 +104,7 @@ function App() {
       {students.length > 0 ? (
         <Students students={students} />
       ) : (
-        <div className="error-msg">No results found</div>
+        <div className="error-msg">{errorMessage}</div>
       )}
     </div>
   );
