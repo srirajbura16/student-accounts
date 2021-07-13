@@ -18,11 +18,14 @@ function App() {
 
       if (error) {
         setErrorMessage('Failed to fetch');
+        return;
       } else {
+        students.forEach((student) => (student.tags = []));
         AllStudents.current = students;
         setStudents(students);
-        setErrorMessage('No results found');
       }
+
+      setErrorMessage('No students found');
     }
 
     processData();
