@@ -133,6 +133,11 @@ input[type='text']:focus {
 .TestScores {
   list-style-type: none;
 }
+
+.grade-percent {
+  margin-left: 1rem;
+}
+
 /* TEST-SCORES */
 
 /* EXTENDED-COMPONENET */
@@ -172,6 +177,7 @@ input[type='text']:focus {
 
 /* ERROR */
 .error-msg {
+  font-size: 1.5rem;
   color: red;
 }
 /* ERROR */

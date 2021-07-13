@@ -6,9 +6,9 @@ import Tags from './InfoContainer/Tags';
 import TestScores from './InfoContainer/TestScores';
 
 function StudentInfo({ student }) {
-  const { firstName, lastName, email, company, skill, grades } = student;
-
   const [extend, setExtend] = useState(false);
+
+  const { firstName, lastName, email, company, skill, grades } = student;
 
   return (
     <div className="StudentInfo">
@@ -29,7 +29,8 @@ function StudentInfo({ student }) {
 
           {extend && (
             <>
-              <TestScores grades={grades} /> <Tags student={student} />
+              <TestScores grades={grades} />
+              <Tags student={student} />
             </>
           )}
         </div>

@@ -17,7 +17,7 @@ function App() {
       const [students, error] = await fetchData();
 
       if (error) {
-        setErrorMessage('Failed to fetch');
+        setErrorMessage('Failed to fetch data');
         return;
       } else {
         students.forEach((student) => (student.tags = []));
