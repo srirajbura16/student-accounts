@@ -161,8 +161,8 @@ input[type='text']:focus {
     align-items: center;
   }
 
-  .InfoContainer {
-    font-size: 0.7rem;
+  .StudentInfo {
+    font-size: 0.8rem;
     margin-top: 1rem;
     width: 100%;
     justify-content: space-around;

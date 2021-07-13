@@ -5,7 +5,7 @@ import fetchData from './fetchData';
 
 function App() {
   const [students, setStudents] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('Loading...');
 
   const [nameField, setNameField] = useState('');
   const [tagField, setTagField] = useState('');
