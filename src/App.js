@@ -5,7 +5,7 @@ import fetchData from './fetchData';
 
 function App() {
   const [students, setStudents] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('Loading...');
+  const [errLoadingMessage, setErrLoadingMessage] = useState('Loading...');
 
   const [nameField, setNameField] = useState('');
   const [tagField, setTagField] = useState('');
@@ -17,15 +17,14 @@ function App() {
       const [students, error] = await fetchData();
 
       if (error) {
-        setErrorMessage('Failed to fetch data');
+        setErrLoadingMessage('Failed to fetch data');
         return;
       } else {
-        students.forEach((student) => (student.tags = []));
         AllStudents.current = students;
         setStudents(students);
       }
 
-      setErrorMessage('No students found');
+      setErrLoadingMessage('No students found');
     }
 
     processData();
@@ -91,21 +90,19 @@ function App() {
           className="name-search"
           placeholder="Search by name"
           onChange={handleName}
-          data-testid="name-search"
         />
         <input
           type="text"
           className="tag-search"
           placeholder="Search by tag"
           onChange={handleTag}
-          data-testid="tag-search"
         />
       </div>
 
       {students.length > 0 ? (
         <Students students={students} />
       ) : (
-        <div className="error-msg">{errorMessage}</div>
+        <div className="error-loading-msg">{errLoadingMessage}</div>
       )}
     </div>
   );

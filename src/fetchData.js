@@ -4,6 +4,7 @@ async function fetchData() {
   try {
     const response = await fetch(API_URL, { mode: 'cors' });
     const { students } = await response.json();
+    students.forEach((student) => (student.tags = []));
 
     return [students, null];
   } catch (error) {

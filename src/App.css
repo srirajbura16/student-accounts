@@ -176,7 +176,7 @@ input[type='text']:focus {
 /* RESPONSIVE */
 
 /* ERROR */
-.error-msg {
+.error-loading-msg {
   font-size: 1.5rem;
   color: red;
 }
