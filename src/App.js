@@ -91,12 +91,14 @@ function App() {
           className="name-search"
           placeholder="Search by name"
           onChange={handleName}
+          data-testid="name-search"
         />
         <input
           type="text"
           className="tag-search"
           placeholder="Search by tag"
           onChange={handleTag}
+          data-testid="tag-search"
         />
       </div>
 
