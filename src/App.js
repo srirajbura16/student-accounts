@@ -41,10 +41,8 @@ function App() {
     //filter students with given name respective to the tag or no tag.
     const filterStudentNames = students.filter((student) => {
       const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
-      if (fullName.includes(nameField)) {
-        return student;
-      }
-      return false;
+
+      return fullName.includes(nameField);
     });
 
     return filterStudentNames;
@@ -57,10 +55,7 @@ function App() {
     }
 
     const filterStudentTags = AllStudents.current.filter((student) => {
-      if (searchStudentTags(student.tags, tagField)) {
-        return student;
-      }
-      return false;
+      return searchStudentTags(student.tags, tagField);
     });
 
     return filterStudentTags;
