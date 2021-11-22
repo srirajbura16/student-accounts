@@ -31,35 +31,36 @@ function App() {
   }, []);
 
   useEffect(() => {
+    function filterNames(students) {
+      //filter students with given name respective to the tag or no tag.
+      const filterStudentNames = students.filter((student) => {
+        const fullName =
+          `${student.firstName} ${student.lastName}`.toLowerCase();
+
+        return fullName.includes(nameField);
+      });
+
+      return filterStudentNames;
+    }
+
+    function filterTags() {
+      //filter all students with given input by the user. If tagfield is empty, return all students.
+      if (tagField.length === 0) {
+        return AllStudents.current;
+      }
+
+      const filterStudentTags = AllStudents.current.filter((student) => {
+        return searchStudentTags(student.tags, tagField);
+      });
+
+      return filterStudentTags;
+    }
+
     const filteredStudentTags = filterTags();
     const currentStudents = filterNames(filteredStudentTags);
 
     setStudents(currentStudents);
   }, [nameField, tagField]);
-
-  function filterNames(students) {
-    //filter students with given name respective to the tag or no tag.
-    const filterStudentNames = students.filter((student) => {
-      const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
-
-      return fullName.includes(nameField);
-    });
-
-    return filterStudentNames;
-  }
-
-  function filterTags() {
-    //filter all students with given input by the user. If tagfield is empty, return all students.
-    if (tagField.length === 0) {
-      return AllStudents.current;
-    }
-
-    const filterStudentTags = AllStudents.current.filter((student) => {
-      return searchStudentTags(student.tags, tagField);
-    });
-
-    return filterStudentTags;
-  }
 
   function searchStudentTags(tags, value) {
     //search value through student tags, if found, return a boolean.
