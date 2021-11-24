@@ -1,5 +1,5 @@
-import '../App.css';
 import StudentInfo from './StudentInfo';
+import Image from 'next/image';
 
 function Students({ students }) {
   return (
@@ -16,7 +16,12 @@ function Student({ student }) {
     <div className="Student">
       <div className="student-container">
         <div className="avatar">
-          <img src={student.pic} alt="Profile Avatar" />
+          <Image
+            src={student.pic}
+            alt="Profile Avatar"
+            width={500}
+            height={500}
+          />
         </div>
         <StudentInfo student={student} />
       </div>

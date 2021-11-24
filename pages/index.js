@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import './App.css';
-import Students from './components/Students';
-import fetchData from './fetchData';
+import Students from '../components/Students';
 
-function App() {
+function App({ data }) {
   const [students, setStudents] = useState([]);
   const [errLoadingMessage, setErrLoadingMessage] = useState('Loading...');
 
@@ -13,21 +11,17 @@ function App() {
   const AllStudents = useRef([]);
 
   useEffect(() => {
-    async function processData() {
-      const [students, error] = await fetchData();
+    if (data.notFound) {
+      setErrLoadingMessage('Failed to fetch data');
+      return;
+    } else {
+      const fetchedStudents = data.students;
 
-      if (error) {
-        setErrLoadingMessage('Failed to fetch data');
-        return;
-      } else {
-        AllStudents.current = students;
-        setStudents(students);
-      }
-
-      setErrLoadingMessage('No students found');
+      AllStudents.current = fetchedStudents;
+      setStudents(fetchedStudents);
     }
 
-    processData();
+    setErrLoadingMessage('No students found');
   }, []);
 
   useEffect(() => {
@@ -105,3 +99,21 @@ function App() {
 }
 
 export default App;
+
+export async function getStaticProps(context) {
+  const API_URL = `https://api.hatchways.io/assessment/students`;
+  const res = await fetch(API_URL, { mode: 'cors' });
+  const data = await res.json();
+  data.students.forEach((student) => (student.tags = []));
+  console.log(data);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { data }, // will be passed to the page component as props
+  };
+}

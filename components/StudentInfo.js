@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../App.css';
 import ExtendComponent from './InfoContainer/ExtendComponent';
 import PersonalInfo from './InfoContainer/PersonalInfo';
 import Tags from './InfoContainer/Tags';
