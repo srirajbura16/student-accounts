@@ -4,7 +4,7 @@ Student Accounts is a profile management app whose data is fetched from an API e
 
 The main features include:
 
-- filter search between student names and tags at the same time
+- Search filter between student names and tags at the same time
 - Way to add tags to students
 - Extent student profile to see more information
 
